@@ -1,6 +1,282 @@
-<input id="id_station_name" type="text" value="Swag" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>EACC SELF-DECLARATION APPLICATION</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="#!"><b>EACC SELF-DECLARATION APPLICATION</b></a>
+                <a class="btn btn-primary" target="_blank" | CSS-Tricks href="https://form.jotform.com/220871668836569">Start Filling</a>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5"></h1>
+                            <!-- Signup form-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- * * SB Forms Contact Form * *-->
+                            <!-- * * * * * * * * * * * * * * *-->
+                            <!-- This form is pre-integrated with SB Forms.-->
+                            <!-- To make this form functional, sign up at-->
+                            <!-- https://startbootstrap.com/solution/contact-forms-->
+                            <!-- to get an API token!-->
+                           
 
-<script>
-    var station_name = {{station_name}};
-    document.getElementById("id_station_name).value = station_name;
-</script>
+                            <script>
+                                function autocomplete(inp, arr) {
+                                  /*the autocomplete function takes two arguments,
+                                  the text field element and an array of possible autocompleted values:*/
+                                  var currentFocus;
+                                  /*execute a function when someone writes in the text field:*/
+                                  inp.addEventListener("input", function(e) {
+                                      var a, b, i, val = this.value;
+                                      /*close any already open lists of autocompleted values*/
+                                      closeAllLists();
+                                      if (!val) { return false;}
+                                      currentFocus = -1;
+                                      /*create a DIV element that will contain the items (values):*/
+                                      a = document.createElement("DIV");
+                                      a.setAttribute("id", this.id + "autocomplete-list");
+                                      a.setAttribute("class", "autocomplete-items");
+                                      /*append the DIV element as a child of the autocomplete container:*/
+                                      this.parentNode.appendChild(a);
+                                      /*for each item in the array...*/
+                                      for (i = 0; i < arr.length; i++) {
+                                        /*check if the item starts with the same letters as the text field value:*/
+                                        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                                          /*create a DIV element for each matching element:*/
+                                          b = document.createElement("DIV");
+                                          /*make the matching letters bold:*/
+                                          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                                          b.innerHTML += arr[i].substr(val.length);
+                                          /*insert a input field that will hold the current array item's value:*/
+                                          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                                          /*execute a function when someone clicks on the item value (DIV element):*/
+                                          b.addEventListener("click", function(e) {
+                                              /*insert the value for the autocomplete text field:*/
+                                              inp.value = this.getElementsByTagName("input")[0].value;
+                                              /*close the list of autocompleted values,
+                                              (or any other open lists of autocompleted values:*/
+                                              closeAllLists();
+                                          });
+                                          a.appendChild(b);
+                                        }
+                                      }
+                                  });
+                                  /*execute a function presses a key on the keyboard:*/
+                                  inp.addEventListener("keydown", function(e) {
+                                      var x = document.getElementById(this.id + "autocomplete-list");
+                                      if (x) x = x.getElementsByTagName("div");
+                                      if (e.keyCode == 40) {
+                                        /*If the arrow DOWN key is pressed,
+                                        increase the currentFocus variable:*/
+                                        currentFocus++;
+                                        /*and and make the current item more visible:*/
+                                        addActive(x);
+                                      } else if (e.keyCode == 38) { //up
+                                        /*If the arrow UP key is pressed,
+                                        decrease the currentFocus variable:*/
+                                        currentFocus--;
+                                        /*and and make the current item more visible:*/
+                                        addActive(x);
+                                      } else if (e.keyCode == 13) {
+                                        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                                        e.preventDefault();
+                                        if (currentFocus > -1) {
+                                          /*and simulate a click on the "active" item:*/
+                                          if (x) x[currentFocus].click();
+                                        }
+                                      }
+                                  });
+                                  function addActive(x) {
+                                    /*a function to classify an item as "active":*/
+                                    if (!x) return false;
+                                    /*start by removing the "active" class on all items:*/
+                                    removeActive(x);
+                                    if (currentFocus >= x.length) currentFocus = 0;
+                                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                                    /*add class "autocomplete-active":*/
+                                    x[currentFocus].classList.add("autocomplete-active");
+                                  }
+                                  function removeActive(x) {
+                                    /*a function to remove the "active" class from all autocomplete items:*/
+                                    for (var i = 0; i < x.length; i++) {
+                                      x[i].classList.remove("autocomplete-active");
+                                    }
+                                  }
+                                  function closeAllLists(elmnt) {
+                                    /*close all autocomplete lists in the document,
+                                    except the one passed as an argument:*/
+                                    var x = document.getElementsByClassName("autocomplete-items");
+                                    for (var i = 0; i < x.length; i++) {
+                                      if (elmnt != x[i] && elmnt != inp) {
+                                        x[i].parentNode.removeChild(x[i]);
+                                      }
+                                    }
+                                  }
+                                  /*execute a function when someone clicks in the document:*/
+                                  document.addEventListener("click", function (e) {
+                                      closeAllLists(e.target);
+                                  });
+                                }
+                                
+                                /*An array containing all the country names in the world:*/
+                                var countries = ["Alabama or Texas USA","Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+                                
+                                /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                                autocomplete(document.getElementById("myInput"), countries);
+                                </script>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+   
+        <!-- Image Showcases-->
+        <section class="showcase">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-1.jpg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>About</h2>
+                        <p class="lead mb-0">The Ethics and Anti-Corruption Commission (EACC) is a public body established under Section 3 (1) of the Ethics and Anti-Corruption Commission Act, 2011. The Commission consists of a Chairperson and four other members appointed according to the provisions of the Constitution and Section 4 of the EACC Act. The Commission has a Secretariat, headed by the Secretary/Chief Executive Officer (CEO) to the Commission.</p>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
+                    <div class="col-lg-6 my-auto showcase-text">
+                        <h2>Aplication Process</h2>
+                        <p class="lead mb-0">Completed form to be signed by the applicant and the signature be witnessed by a Commissioner for Oaths or Magistrate.
+
+Upon submission of the completed form, the details are verified and acknowledgment of the application is done by stamping on the copy of the application which is retained by the applicant.
+
+Completed form can be submitted in person or may be dropped on behalf of the applicant at the EACC Head Office at Integrity Centre, Nairobi or at any EACC Regional Office or Huduma Centers country wide. Please do not submit the form online.
+
+No certificate is issued; however, the Commission will submit to the employing agency/panel a confidential report on all short listed applicants.</p>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
+                    <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+                        <h2>Contact Us</h2>
+                        <p class="lead mb-0">For any further assistance / inquiry, you may call the Commission using on contacts provided below;
+
+Nairobi Office Mobile No.:    0727 285663; 0733 520641
+Mombasa Office Mobile No.:    0710 768706 or Tel: 041 2319081 / 2
+Kisumu Office Mobile No:    0715 408512 or Tel: 057 2023111
+Garissa Office Mobile No.:    0729 480404; 0737 994444
+Nyeri Office Mobile No.:    0703 204580; 0789 665500
+Eldoret Office Mobile No.:    0703 602727; 0789 776600</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+        <!-- Call to Action-->
+        <section class="call-to-action text-white text-center" id="signup">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <h2 class="mb-4">Need to receive our Newsletters? Subscribe now!</h2>
+                        <!-- Signup form-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form class="form-subscribe" id="contactFormFooter" data-sb-form-api-token="API_TOKEN">
+                            <!-- Email address input-->
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control form-control-lg" id="emailAddressBelow" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:required">Email Address is required.</div>
+                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:email">Email Address Email is not valid.</div>
+                                </div>
+                                <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    <p>To fill out our form,click below.</p>
+                                    <a class="text-white" href="https://form.jotform.com/220871668836569">Start Now</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><a href="#!">About</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Contact</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                            <li class="list-inline-item">⋅</li>
+                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; EACC FORM 2022. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item me-4">
+                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
